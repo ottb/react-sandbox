@@ -35,7 +35,7 @@ class WordPressController extends Component {
       console.log("Post display order is " + this.state.postOrder);
     }
 
-    if (!this.props.url || !this.props.url.length) {
+    if (this.props.url !== prevProps.url && (!this.props.url || !this.props.url.length)) {
       this.setState({message: "no posts at this time"});
     } else if (this.state.maxPosts !== prevState.maxPosts || this.state.postOrder !== prevState.postOrder) {
       this.callAPI();
