@@ -37,7 +37,7 @@ class WordPressController extends Component {
 
     if (!this.props.url || !this.props.url.length) {
       this.setState({message: "no posts at this time"});
-    } else if (this.state.maxPosts != prevState.maxPosts || this.state.postOrder != prevState.postOrder) {
+    } else if (this.state.maxPosts !== prevState.maxPosts || this.state.postOrder !== prevState.postOrder) {
       this.callAPI();
     }
   }
