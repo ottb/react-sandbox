@@ -16,6 +16,7 @@ class ButtonComponent extends Component {
     this.props.buttonClick(this.props.message);
   }
 
+  // on component update, generate log messages to avoid race condition with state transition
   componentDidUpdate(prevProps, prevState) {
     if (this.props.numClicks > prevProps.numClicks) {
       var currentdate = new Date(); 
