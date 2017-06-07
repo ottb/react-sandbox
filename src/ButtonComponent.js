@@ -31,7 +31,6 @@ class ButtonComponent extends Component {
   }
 
   // need to add in form elements
-  // https://facebook.github.io/react/docs/forms.html
   render() {
     return (
         <div>

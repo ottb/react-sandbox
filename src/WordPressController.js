@@ -35,9 +35,11 @@ class WordPressController extends Component {
       console.log("Post display order is " + this.state.postOrder);
     }
 
+    // only update message state if url prop is newly empty, otherwise this gets into a rendering loop when no url is provided
+    // only call API if the number of posts or order of posts or url has changed
     if (this.props.url !== prevProps.url && (!this.props.url || !this.props.url.length)) {
       this.setState({message: "no posts at this time"});
-    } else if (this.state.maxPosts !== prevState.maxPosts || this.state.postOrder !== prevState.postOrder) {
+    } else if (this.props.url !== prevProps.url || this.state.maxPosts !== prevState.maxPosts || this.state.postOrder !== prevState.postOrder) {
       this.callAPI();
     }
   }

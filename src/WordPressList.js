@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import WordPressPost from './WordPressPost';
 
 class WordPressList extends Component {
-  // create list of posts to render
+  // create list of posts to render if posts have been passed in, otherwise just render message
   render() {
     if (this.props.posts) {
       const postItems = this.props.posts.map((post) =>
