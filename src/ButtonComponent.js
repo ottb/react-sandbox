@@ -18,8 +18,8 @@ class ButtonComponent extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.numClicks > prevProps.numClicks) {
-      var currentdate = new Date(); 
-      var datetime = currentdate.getDate() + "/"
+      let currentdate = new Date(); 
+      let datetime = currentdate.getDate() + "/"
                   + (currentdate.getMonth()+1)  + "/" 
                   + currentdate.getFullYear() + " @ "  
                   + currentdate.getHours() + ":"  
