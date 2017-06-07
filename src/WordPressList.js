@@ -8,7 +8,7 @@ class WordPressList extends Component {
     this.state = {posts: [], message: "loading..."};
   }
 
-  // need to make use of maxPosts and postOrder
+  // creates request URL based on props, makes API call with error handling
   callAPI() {
     let url = this.props.url + "?_embed";
     if (this.props.maxPosts) {
@@ -32,6 +32,7 @@ class WordPressList extends Component {
       });
   }
 
+  // upon mount, validate url prop and call API if needed
   componentDidMount() {
     if (!this.props.url || !this.props.url.length) {
       this.setState({message: "no posts at this time"});
@@ -40,6 +41,7 @@ class WordPressList extends Component {
     }
   }
 
+  // create list of posts to render
   render() {
     const postItems = this.state.posts.map((post) =>
       <WordPressPost key={post.id} title={post.title.rendered} date={post.date} author={post._embedded.author[0].name} />
