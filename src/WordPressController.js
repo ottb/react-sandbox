@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import WordPressList from './WordPressList';
 import ButtonComponent from './ButtonComponent';
-import callAPI from './functions';
+import { callAPI } from './functions';
 
 class WordPressController extends Component {
   constructor(props) {
