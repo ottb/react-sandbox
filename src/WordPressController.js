@@ -15,7 +15,7 @@ class WordPressController extends Component {
     if (!this.props.url || !this.props.url.length) {
       this.setState({message: "no posts at this time"});
     } else {
-      this.callAPI();
+      this.manageAPIState(this.props.url, this.state.maxPosts, this.state.postOrder);
     }
   }
 
@@ -40,31 +40,48 @@ class WordPressController extends Component {
     if (this.props.url !== prevProps.url && (!this.props.url || !this.props.url.length)) {
       this.setState({message: "no posts at this time"});
     } else if (this.props.url !== prevProps.url || this.state.maxPosts !== prevState.maxPosts || this.state.postOrder !== prevState.postOrder) {
-      this.callAPI();
+      this.manageAPIState(this.props.url, this.state.maxPosts, this.state.postOrder);
     }
   }
 
   // creates request URL based on state, makes API call with error handling
-  callAPI() {
-    let url = this.props.url + "?_embed";
-    if (this.state.maxPosts) {
-      url += "&per_page=" + this.state.maxPosts;
-    }
-    if (this.state.postOrder) {
-      url += "&filter[orderby]=date&order=" + this.state.postOrder;
-    }
-    axios.get(url)
-      .then((response) => {
-        if (!response.data || response.data.length === 0) {
-          this.setState({message: "no posts at this time"});
-        } else {
-          console.log(response.data);
-          this.setState({message: ""});
-          this.setState({posts: response.data});
-        }
-      })
-      .catch((error) => {
-        this.setState({message: "error loading posts"});
+  callAPI(urlProp, maxPosts, postOrder) {
+    return new Promise(function(resolve, reject) {
+      let obj = {
+        message: "",
+        posts: []
+      };
+
+      let url = urlProp + "?_embed";
+      if (maxPosts) {
+        url += "&per_page=" + maxPosts;
+      }
+      if (postOrder) {
+        url += "&filter[orderby]=date&order=" + postOrder;
+      }
+      axios.get(url)
+        .then((response) => {
+          if (!response.data || response.data.length === 0) {
+            obj.message = "no posts at this time";
+          } else {
+            obj.posts = response.data;
+          }
+          resolve(obj);
+        })
+        .catch((error) => {
+          obj.message = "error loading posts";
+          resolve(obj);
+        });
+    });
+  }
+
+  // issues call to API, manages state updates
+  manageAPIState(url, maxPosts, postOrder) {
+    this.setState({message: "loading..."});
+
+    this.callAPI(url, maxPosts, postOrder)
+      .then((state) => {
+        this.setState({message: state.message, posts: state.posts});
       });
   }
 
