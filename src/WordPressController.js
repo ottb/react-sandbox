@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import WordPressList from './WordPressList';
 import ButtonComponent from './ButtonComponent';
+import callAPI from './functions';
 
 class WordPressController extends Component {
   constructor(props) {
@@ -44,42 +44,11 @@ class WordPressController extends Component {
     }
   }
 
-  // creates request URL based on state, makes API call with error handling
-  callAPI(urlProp, maxPosts, postOrder) {
-    return new Promise(function(resolve, reject) {
-      let obj = {
-        message: "",
-        posts: []
-      };
-
-      let url = urlProp + "?_embed";
-      if (maxPosts) {
-        url += "&per_page=" + maxPosts;
-      }
-      if (postOrder) {
-        url += "&filter[orderby]=date&order=" + postOrder;
-      }
-      axios.get(url)
-        .then((response) => {
-          if (!response.data || response.data.length === 0) {
-            obj.message = "no posts at this time";
-          } else {
-            obj.posts = response.data;
-          }
-          resolve(obj);
-        })
-        .catch((error) => {
-          obj.message = "error loading posts";
-          resolve(obj);
-        });
-    });
-  }
-
   // issues call to API, manages state updates
   manageAPIState(url, maxPosts, postOrder) {
     this.setState({message: "loading..."});
 
-    this.callAPI(url, maxPosts, postOrder)
+    callAPI(url, maxPosts, postOrder)
       .then((state) => {
         this.setState({message: state.message, posts: state.posts});
       });
