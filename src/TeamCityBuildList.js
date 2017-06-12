@@ -6,7 +6,7 @@ class TeamCityBuildList extends Component {
   render() {
     if (this.props.builds) {
       const buildItems = this.props.builds.map((build) =>
-        <TeamCityBuild key={build.id} type={build.buildTypeId} status={build.status} />
+        <TeamCityBuild key={build.id} type={build.buildTypeId} status={build.status} date={build.finishDate} />
       );
 
       return (

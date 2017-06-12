@@ -47,7 +47,9 @@ export function callTeamCityAPI(urlProp, maxBuilds, state) {
     if (state) {
       url += "state:" + state + ",";
     }
-console.log(url);
+
+    url += "&fields=build(id,buildTypeId,number,status,state,branchName,defaultBranch,href,webUrl,startDate,finishDate)";
+
     axios.get(url)
       .then((response) => {
         if (!response.data.build || response.data.build.length === 0) {
@@ -59,6 +61,31 @@ console.log(url);
       })
       .catch((error) => {
         obj.message = "error loading builds";
+        resolve(obj);
+      });
+  });
+}
+
+// creates request URL based on state, makes API call with error handling
+export function callAlgoliaAPI(urlProp, state) {
+  return new Promise(function (resolve, reject) {
+    let obj = {
+      message: "",
+      searches: []
+    };
+
+    axios.get(urlProp, {headers: {'X-Algolia-API-Key': 'd88c8d7ac0955fecc8f0de2637969b6b', 'X-Algolia-Application-Id': 'NLI34IG0X3' }})
+      .then((response) => {
+        console.log(response);
+        if (!response.data.total_search_operations || response.data.total_search_operations.length === 0) {
+          obj.message = "no search statistics at this time";
+        } else {
+          obj.searches = response.data.total_search_operations;
+        }
+        resolve(obj);
+      })
+      .catch((error) => {
+        obj.message = "error loading search statistics";
         resolve(obj);
       });
   });
