@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-var BarChart =  require('zingchart-react').bar;  
+import { bar as BarChart } from 'zingchart-react';
 
 class AlgoliaSearch extends Component {
   // list total searches over last 30 days and will display a bar chart of daily search operations
