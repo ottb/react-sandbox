@@ -76,7 +76,6 @@ export function callAlgoliaAPI(urlProp, state) {
 
     axios.get(urlProp, {headers: {'X-Algolia-API-Key': 'd88c8d7ac0955fecc8f0de2637969b6b', 'X-Algolia-Application-Id': 'NLI34IG0X3' }})
       .then((response) => {
-        console.log(response);
         if (!response.data.total_search_operations || response.data.total_search_operations.length === 0) {
           obj.message = "no search statistics at this time";
         } else {

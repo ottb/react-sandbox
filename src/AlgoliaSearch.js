@@ -11,7 +11,6 @@ class AlgoliaSearch extends Component {
 
       const searchDays = this.props.searches.map((day) => day.v);
 
-      console.log(searchDays);
 
       let searchData = [
         {text: "Operations", values: searchDays}
