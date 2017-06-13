@@ -9,7 +9,7 @@ class App extends Component {
     return(
       <div className="container" ref={this.dragulaDecorator}>
         <WordPressController url="https://health.clevelandclinic.org/wp-json/wp/v2/posts" />
-        <TeamCityBuildController url="http://cc-clmccbld01:9090/guestAuth/app/rest/builds" state="finished" />
+        <TeamCityBuildController url="http://cc-clmccbld01:9090/guestAuth/app/rest/builds" />
         <AlgoliaSearchController url="https://status.algolia.com/1/usage/total_search_operations/period/month" />
       </div>
     );

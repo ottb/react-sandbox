@@ -46,9 +46,11 @@ export function callTeamCityAPI(urlProp, maxBuilds, state) {
 
     if (state) {
       url += "state:" + state + ",";
+    } else {
+      url += "running:any,";
     }
 
-    url += "&fields=build(id,buildTypeId,number,status,state,branchName,defaultBranch,href,webUrl,startDate,finishDate)";
+    url += "&fields=build(id,buildTypeId,number,status,state,branchName,defaultBranch,href,webUrl,startDate,finishDate,percentageComplete)";
 
     axios.get(url)
       .then((response) => {
