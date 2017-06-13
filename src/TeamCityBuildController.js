@@ -23,14 +23,14 @@ class TeamCityBuildController extends Component {
     // only call API if the number of posts or order of posts or url has changed
     if (this.props.url !== prevProps.url && (!this.props.url || !this.props.url.length)) {
       this.setState({message: "no builds at this time"});
-    } else if (this.props.url !== prevProps.url || this.state.maxPosts !== prevState.maxPosts) {
-      this.manageAPIState(this.props.url, this.state.maxPosts);
+    } else if (this.props.url !== prevProps.url || this.state.maxBuilds !== prevState.maxBuilds || (this.props.ticks !== prevProps.ticks && this.props.ticks % 5 === 0)) {
+      this.manageAPIState(this.props.url, this.state.maxBuilds);
     }
   }
 
   // issues call to API, manages state updates
   manageAPIState(url, maxBuilds, state) {
-    this.setState({message: "loading..."});
+    this.setState({message: ""});
 
     callTeamCityAPI(url, maxBuilds, state)
       .then((state) => {
