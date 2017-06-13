@@ -4,7 +4,7 @@ import { bar as BarChart } from 'zingchart-react';
 class AlgoliaSearch extends Component {
   // list total searches over last 30 days and will display a bar chart of daily search operations
   render() {
-    if (this.props.searches) {
+    if (this.props.searches && this.props.searches.length) {
       let searchTotal = 0;
       let length = this.props.searches.length;
       while (length--) searchTotal += this.props.searches[length].v;
