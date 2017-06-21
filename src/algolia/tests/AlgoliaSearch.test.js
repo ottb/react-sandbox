@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, render, mount } from 'enzyme';
-import AlgoliaSearch from './AlgoliaSearch';
+import AlgoliaSearch from '../components/AlgoliaSearch';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

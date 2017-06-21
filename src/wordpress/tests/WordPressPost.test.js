@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ButtonComponent from './ButtonComponent';
+import WordPressPost from '../components/WordPressPost';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<ButtonComponent />, div);
+  ReactDOM.render(<WordPressPost />, div);
 });

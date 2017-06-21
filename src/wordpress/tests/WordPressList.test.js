@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WordPressList from './WordPressList';
+import WordPressList from '../components/WordPressList';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TeamCityBuildList from './TeamCityBuildList';
+import ButtonComponent from '../components/ButtonComponent';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<TeamCityBuildList />, div);
+  ReactDOM.render(<ButtonComponent />, div);
 });
