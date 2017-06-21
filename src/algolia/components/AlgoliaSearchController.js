@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AlgoliaSearch from './AlgoliaSearch';
-import { callAlgoliaAPI } from './functions';
+import { callAlgoliaAPI } from '../../functions';
 
 class AlgoliaSearchController extends Component {
   constructor(props) {
@@ -48,6 +49,15 @@ class AlgoliaSearchController extends Component {
         </div>
     );
   }
+}
+
+AlgoliaSearchController.defaultProps = {
+  ticks: 0
+}
+
+AlgoliaSearchController.propTypes = {
+  url: PropTypes.string.isRequired,
+  ticks: PropTypes.number
 }
 
 export default AlgoliaSearchController;

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Dragula from 'react-dragula';
-import WordPressController from './WordPressController'
-import TeamCityBuildController from './TeamCityBuildController'
-import AlgoliaSearchController from './AlgoliaSearchController'
+import WordPressController from './wordpress/components/WordPressController'
+import TeamCityBuildController from './teamcity/components/TeamCityBuildController'
+import AlgoliaSearchController from './algolia/components/AlgoliaSearchController'
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.tick = this.tick.bind(this);
     this.state = {ticks: 0};
   }
 
@@ -25,7 +24,7 @@ class App extends Component {
     this.timer = setInterval(this.tick, 1000);
   }
 
-  tick() {
+  tick = () => {
     this.setState((prevState) => {
       return {ticks: prevState.ticks + 1};
     });

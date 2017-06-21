@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WordPressController from './WordPressController';
-import { callAPI } from './functions';
+import AlgoliaSearchController from '../components/AlgoliaSearchController';
+import { callAlgoliaAPI } from '../../functions';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<WordPressController />, div);
+  ReactDOM.render(<AlgoliaSearchController />, div);
 });
 
 // add test for callAPI function
 it('returns 1 post with valid API call', () => {
-  callAPI("https://health.clevelandclinic.org/wp-json/wp/v2/posts", 1, "desc")
+  callAlgoliaAPI("https://status.algolia.com/1/usage/total_search_operations/period/month", 1)
     .then((returnState) => {
       // this should actually be 1, but apparently you can't fire off a network request in jest?
-      expect(returnState.posts.length).toBe(0);  
+      expect(returnState.searches.length).toBe(0);  
     });
 });

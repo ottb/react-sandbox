@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TeamCityBuild from './TeamCityBuild';
 
 class TeamCityBuildList extends Component {
@@ -23,6 +24,11 @@ class TeamCityBuildList extends Component {
       );
     }
   }
+}
+
+TeamCityBuildList.PropTypes = {
+  builds: PropTypes.array,
+  message: PropTypes.string.isRequired
 }
 
 export default TeamCityBuildList;

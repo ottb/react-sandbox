@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class WordPressPost extends Component {
 
@@ -9,6 +10,12 @@ class WordPressPost extends Component {
         </div>
     );
   }
+}
+
+WordPressPost.propTypes = {
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired
 }
 
 export default WordPressPost;

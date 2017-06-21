@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TeamCityBuildList from './TeamCityBuildList';
-import { callTeamCityAPI } from './functions';
+import { callTeamCityAPI } from '../../functions';
 
 class TeamCityBuildController extends Component {
   constructor(props) {
@@ -46,6 +47,15 @@ class TeamCityBuildController extends Component {
         </div>
     );
   }
+}
+
+TeamCityBuildController.defaultProps = {
+  ticks: 0
+}
+
+TeamCityBuildController.propTypes = {
+  url: PropTypes.string.isRequired,
+  ticks: PropTypes.number
 }
 
 export default TeamCityBuildController;

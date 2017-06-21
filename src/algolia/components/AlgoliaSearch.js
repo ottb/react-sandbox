@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bar as BarChart } from 'zingchart-react';
 
 class AlgoliaSearch extends Component {
@@ -30,6 +31,11 @@ class AlgoliaSearch extends Component {
       );
     }
   }
+}
+
+AlgoliaSearch.propTypes = {
+  searches: PropTypes.array,
+  message: PropTypes.string
 }
 
 export default AlgoliaSearch;

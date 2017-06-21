@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ButtonComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {maxPosts: this.props.maxPosts, postOrder: this.props.postOrder};
-    this.buttonClick = this.buttonClick.bind(this);
-    this.handleSelectChange = this.handleSelectChange.bind(this);
 
-    if (!this.props.message) {
-        this.message = "Update List";
-    } else {
+    if (this.props.message) {
         this.message = this.props.message;
     }
   }
 
   // take select value and update local state
-  handleSelectChange(event) {
+  handleSelectChange = (event) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -26,7 +23,7 @@ class ButtonComponent extends Component {
   }
 
   // pass local form values in state back to controller
-  buttonClick() {
+  buttonClick = () => {
     this.props.buttonClick(this.state.maxPosts, this.state.postOrder);
   }
 
@@ -62,6 +59,17 @@ class ButtonComponent extends Component {
         </div>
     );
   }
+}
+
+ButtonComponent.defaultProps = {
+  message: "Update List"
+}
+
+ButtonComponent.propTypes = {
+  message: PropTypes.string,
+  maxPosts: PropTypes.number.isRequired,
+  postOrder: PropTypes.string.isRequired,
+  buttonClick: PropTypes.func.isRequired
 }
 
 export default ButtonComponent;

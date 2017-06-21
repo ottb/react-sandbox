@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import WordPressList from './WordPressList';
 import ButtonComponent from './ButtonComponent';
-import { callAPI } from './functions';
+import { callAPI } from '../../functions';
 
 class WordPressController extends Component {
   constructor(props) {
     super(props);
     this.state = {posts: [], message: "loading...", numClicks: 0, maxPosts: 5, postOrder: "desc"};
-    this.buttonClick = this.buttonClick.bind(this);
   }
 
   // upon mount, validate url prop and call API if needed
@@ -55,7 +55,7 @@ class WordPressController extends Component {
   }
 
   // on click, update state with number of clicks and maxPosts/postOrder from form component
-  buttonClick(maxPosts, postOrder) {
+  buttonClick = (maxPosts, postOrder) => {
     this.setState((prevState) => {
       return {numClicks: prevState.numClicks + 1};
     });
@@ -67,11 +67,20 @@ class WordPressController extends Component {
   render() {
     return (
         <div>
-          <ButtonComponent buttonClick={this.buttonClick.bind(this)} maxPosts={this.state.maxPosts} postOrder={this.state.postOrder} />
+          <ButtonComponent buttonClick={this.buttonClick} maxPosts={this.state.maxPosts} postOrder={this.state.postOrder} />
           <WordPressList posts={this.state.posts} message={this.state.message} />
         </div>
     );
   }
+}
+
+WordPressController.defaultProps = {
+  ticks: 0
+}
+
+WordPressController.propTypes = {
+  url: PropTypes.string.isRequired,
+  ticks: PropTypes.number
 }
 
 export default WordPressController;

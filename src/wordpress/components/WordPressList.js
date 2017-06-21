@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import WordPressPost from './WordPressPost';
 
 class WordPressList extends Component {
@@ -23,6 +24,11 @@ class WordPressList extends Component {
       );
     }
   }
+}
+
+WordPressList.PropTypes = {
+  posts: PropTypes.array,
+  message: PropTypes.string.isRequired
 }
 
 export default WordPressList;

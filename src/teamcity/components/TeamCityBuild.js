@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TeamCityBuild extends Component {
 
@@ -17,6 +18,14 @@ class TeamCityBuild extends Component {
       );
     }
   }
+}
+
+TeamCityBuild.propTypes = {
+  state: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  progress: PropTypes.number
 }
 
 export default TeamCityBuild;

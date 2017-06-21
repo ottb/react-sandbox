@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TeamCityBuildController from './TeamCityBuildController';
-import { callTeamCityAPI } from './functions';
+import TeamCityBuildController from '../components/TeamCityBuildController';
+import { callTeamCityAPI } from '../../functions';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
