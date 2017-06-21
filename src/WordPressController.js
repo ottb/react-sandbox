@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import * as Toastr from 'toastr';
+import './/../node_modules/toastr/build/toastr.css'; //You need style and css loader installed and set
 import WordPressList from './WordPressList';
 import ButtonComponent from './ButtonComponent';
 import { callAPI } from './functions';
@@ -59,7 +61,8 @@ class WordPressController extends Component {
     this.setState((prevState) => {
       return {numClicks: prevState.numClicks + 1};
     });
-
+    
+    Toastr.success('View settings updated');
     this.setState({maxPosts: maxPosts, postOrder: postOrder});
   }
   
