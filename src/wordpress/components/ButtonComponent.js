@@ -14,8 +14,11 @@ class ButtonComponent extends Component {
   // take select value and update local state
   handleSelectChange = (event) => {
     const target = event.target;
-    const value = target.value;
     const name = target.name;
+    let value = Number(target.value, 10);
+    if (isNaN(value)) {
+      value = target.value;
+    }
 
     this.setState({
       [name]: value

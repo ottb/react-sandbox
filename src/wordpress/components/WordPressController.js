@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as Toastr from 'toastr';
-import './/../node_modules/toastr/build/toastr.css'; //You need style and css loader installed and set
+import '../../../node_modules/toastr/build/toastr.css'; //You need style and css loader installed and set
 import WordPressList from './WordPressList';
 import ButtonComponent from './ButtonComponent';
 import { callAPI } from '../../functions';
