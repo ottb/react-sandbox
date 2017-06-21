@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class WordPressPost extends Component {
-
-  render() {
-    return (
-        <div>
-          {this.props.title} - {this.props.date} ({this.props.author})
-        </div>
-    );
-  }
+const WordPressPost = (props) => {
+  return (
+    <div>
+      {props.title} - {props.date} ({props.author})
+    </div>
+  );
 }
 
 WordPressPost.propTypes = {
