@@ -25,11 +25,6 @@ class ButtonComponent extends Component {
     });
   }
 
-  // pass local form values in state back to controller
-  buttonClick = () => {
-    this.props.buttonClick(this.state.maxPosts, this.state.postOrder);
-  }
-
   // need to add in form elements
   render() {
     return (
@@ -58,7 +53,7 @@ class ButtonComponent extends Component {
             </select>
           </label>
           <br />
-          <button onClick={this.buttonClick}>{this.message}</button>
+          <button onClick={() => this.props.buttonClick(this.state.maxPosts, this.state.postOrder)}>{this.message}</button>
         </div>
     );
   }

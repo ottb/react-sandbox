@@ -3,6 +3,7 @@ import Dragula from 'react-dragula';
 import WordPressController from './wordpress/components/WordPressController'
 import TeamCityBuildController from './teamcity/components/TeamCityBuildController'
 import AlgoliaSearchController from './algolia/components/AlgoliaSearchController'
+import BlogController from './microblog/components/BlogController'  
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends Component {
         <WordPressController url="https://health.clevelandclinic.org/wp-json/wp/v2/posts" ticks={this.state.ticks} />
         <TeamCityBuildController url="http://cc-clmccbld01:9090/guestAuth/app/rest/builds" ticks={this.state.ticks} />
         <AlgoliaSearchController url="https://status.algolia.com/1/usage/total_search_operations/period/month" ticks={this.state.ticks} />
+        <BlogController view="list" />
       </div>
     );
   }
