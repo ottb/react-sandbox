@@ -4,11 +4,15 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-polyfill": "^6.23.0",
     "jquery": "^3.2.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-dragula": "^1.1.17",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.0",
+    "redux-immutable-state-invariant": "^2.0.0",
     "toastr": "^2.1.2",
     "zingchart": "^2.6.0",
     "zingchart-react": "^1.0.5"

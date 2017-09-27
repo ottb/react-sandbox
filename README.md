@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ottb/react-sandbox.svg?branch=feature%2Ftravis)](https://travis-ci.org/ottb/react-sandbox)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
