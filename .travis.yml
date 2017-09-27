@@ -9,7 +9,8 @@ cache:
   - packages/react-scripts/node_modules
 install: true
 script:
- - yarn test
+  - yarn
+  - yarn test
 env:
   global:
     - USE_YARN=yes
