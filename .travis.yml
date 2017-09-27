@@ -14,3 +14,5 @@ script:
 env:
   global:
     - USE_YARN=yes
+notifications:
+  slack: ccfdevteam:ZVaJhLCpKKFZKaisqvR2iB75
