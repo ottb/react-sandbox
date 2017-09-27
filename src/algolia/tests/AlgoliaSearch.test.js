@@ -24,4 +24,3 @@ it('displays a barchart when prop contains an array', () =>{
   const wrapper = shallow(<AlgoliaSearch searches={array} />);
   expect(wrapper.contains('<Bar />'));
 });
-
